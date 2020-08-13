@@ -45,7 +45,7 @@ python3 application.py
   * Alternative B: From the `/ftp-to-s3bucket` folder, run the following command to build a local docker image:
 `docker build -t ftp-to-s3bucket:latest .`
 
-###Setup
+### Setup
 In the file `docker-compose.yml` configure appropriate values for environment variables that is 
 defined in the container. Define the port mapping to  Also consider changing image reference based on your choice of Alternative
 A or B from Prerequisites above.
