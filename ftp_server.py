@@ -11,12 +11,12 @@ def setUpFtpServer():
                         getenv("FTP_PASSWORD"),
                         getcwd() + "/files",
                         perm="ldfwT")
-
+    passive_ports = getenv("FTP_DATA_PORTS").split("-")
     handler = FTPHandler
     handler.authorizer = authorizer
-    handler.passive_ports = range(60000, 65535 + 1)
+    handler.passive_ports = range(int(passive_ports[0]), int(passive_ports[1]) + 1)
 
-    server = FTPServer((getenv("FTP_IP_ADDRESS"), getenv("FTP_PORT")), handler)
+    server = FTPServer((getenv("FTP_IP_ADDRESS"), getenv("FTP_CMD_PORT")), handler)
     server.serve_forever()
 
 
