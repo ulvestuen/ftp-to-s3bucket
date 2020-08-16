@@ -5,14 +5,14 @@ services:
     container_name: ftp-to-s3bucket
     image: ulvestuen/ftp-to-s3bucket:latest
     ports:
-      - "2121:2121"
-      - "50000-51000:50000-51000"
+      - "127.0.0.1:2121:2121"
+      - "127.0.0.1:51000-51100:51000-51100"
     environment:
       - FTP_USERNAME=...
       - FTP_PASSWORD=...
-      - FTP_IP_ADDRESS=...
+      - FTP_IP_ADDRESS=127.0.0.1
       - FTP_CMD_PORT=2121
-      - FTP_DATA_PORTS=50000-51000
+      - FTP_DATA_PORTS=51000-51100
       - S3_BUCKET_NAME=...
       - S3_UPLOAD_INTERVAL=60
       - AWS_REGION=...
