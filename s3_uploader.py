@@ -1,5 +1,6 @@
 import sched
 import time
+import mimetypes
 from os import listdir, getenv
 
 import boto3
@@ -14,9 +15,9 @@ def uploadFiles():
             bucket.put_object(
                 Key=key,
                 Body=data,
-                ContentType='image/png',
+                ContentType=mimetypes.guess_type(filename)[0],
                 Metadata={
-                    'Content-Type': 'image/png'
+                    'Content-Type': mimetypes.guess_type(filename)[0]
                 }
             )
             object_acl = s3.ObjectAcl(getenv('S3_BUCKET_NAME'), key)
